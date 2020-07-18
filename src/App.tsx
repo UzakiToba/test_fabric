@@ -1,11 +1,11 @@
 import React from 'react';
 // import './App.css';
-import { Test } from './component/Test';
+import { CanvasWrapper } from './component/CanvasWrapper';
 
 function App() {
   return (
     <div>
-        <Test />
+        <CanvasWrapper />
     </div>
   );
 }
