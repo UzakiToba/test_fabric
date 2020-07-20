@@ -70,8 +70,28 @@ export const CanvasWrapper: React.FC = () => {
     canvas.add(rect, rect2);
     console.log(canvas.item(0)); // 最初に追加されたobj
     console.log(canvas.getObjects()); // すべてのobj
-    canvas.remove(rect); // 消す;
+    // canvas.remove(rect); // 消す;
     console.log(canvas.getObjects());
+  };
+
+  const fabricInit5 = () => {
+    canvas = new fabric.Canvas('test');
+    const rect = new fabric.Rect({
+      left: 100,
+      top: 100,
+      fill: 'red',
+      width: 20,
+      height: 20,
+      angle: 45,
+    });
+    canvas.add(rect);
+    const target = canvas.item(0);
+    if (target instanceof fabric.Object)
+      target.set('selectable', false);
+    fabric.Image.fromURL('logo512.png', (e) => {
+      e.scaleToWidth(200);
+      canvas.add(e);
+    });
   };
 
   useEffect(() => {
@@ -79,7 +99,7 @@ export const CanvasWrapper: React.FC = () => {
       const canvasElement = document.createElement('canvas');
       canvasElement.id = 'test';
       canvasWrapperRef.current.appendChild(canvasElement);
-      fabricInit4();
+      fabricInit5();
     }
   }, [canvasWrapperRef, fabricInit]);
 
